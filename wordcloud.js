@@ -10,6 +10,7 @@ function handleFileUpload(event) {
     reader.onload = function(e) {
         const text = e.target.result;
         phrases = parseCSV(text);
+        alert("File loaded successfully. Now press 'Generate Phrase Cloud' to see the word cloud.");
     };
 
     reader.readAsText(file);
