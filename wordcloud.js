@@ -17,7 +17,12 @@ function handleFileUpload(event) {
 }
 
 function parseCSV(text) {
-    return text.split(',').map(phrase => phrase.trim());
+    // Split by new lines first, and then handle the comma-separated phrases within each line
+    const rows = text.split('\n').map(row => row.split(','));
+    
+    // Extract the phrases from the rows, skipping the header
+    const phrasesColumn = rows.slice(1).map(row => row.join(',').trim());
+    return phrasesColumn;
 }
 
 function countPhrases(phrases) {
